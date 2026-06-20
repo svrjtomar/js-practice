@@ -572,3 +572,14 @@ console.log(arr)
 
 
 
+{
+
+let number = [2, 4, 6];
+let multipliedNumber =[];
+
+for (let i = 0; i < array.length; i++) {
+ multipliedNumber[i]= number[i]*2;
+  
+}
+
+}
