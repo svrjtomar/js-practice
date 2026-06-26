@@ -235,5 +235,63 @@ console.log(fibonacci(i));
 printFibonacciSeries(5);
 
 
+//Reverse an array.
 
 
+let numbers = [21, 43, 58, 53, 52, 14];
+let revNumbers =[];
+function reverse(num) {
+     
+    for(let i=0; i< numbers.length; i++){
+      
+       revNumbers[i] = numbers[numbers.length-1-i];
+        console.log(revNumbers)
+    }
+    return revNumbers;
+}
+
+
+console.log(reverse(revNumbers));
+
+
+//Sort numbers ascending.
+numbers = [21, 43, 58, 53, 52, 14, 7, 9];
+
+function sorting(arr) {
+
+    sortedArr = arr.sort((a,b) => a-b );
+
+    return sortedArr;
+    
+}
+
+console.log(sorting(numbers));
+
+///
+
+numbers = [21, 43, 58, 53, 52, 14, 7, 9];
+
+numbers.splice(2,3);
+console.log(numbers)
+numbers.splice(2,0,48, 84, 56)
+console.log(numbers)
+numbers.sort((a,b) => a-b);
+console.log(numbers)
+let newArray = numbers.slice(3, 7)
+console.log(newArray)
+console.log(numbers.indexOf(48))
+console.log(numbers.includes(48))
+let Fullname = ['Shiv', 'Raj', 'Singh'];
+console.log(Fullname.join('.'));
+
+const num = [21, 43, 58];
+const items = [48, 84, 56];
+const name = ['Shiv', 'Raj'];
+const rest = ['Singh'];
+let newArray1 = [...num, ...items, ...name, ...rest];
+console.log(newArray1);
+let newNum = [...num];
+console.log(newNum);
+
+let maxNumber = Math.max(...numbers)
+console.log(maxNumber);
