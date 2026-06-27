@@ -244,6 +244,172 @@ printFibonacciSeries(5);
 console.log("Executed")
 })();
 
+//Reverse an array.
+
+
+let numbers = [21, 43, 58, 53, 52, 14];
+let revNumbers =[];
+function reverse(num) {
+     
+    for(let i=0; i< numbers.length; i++){
+      
+       revNumbers[i] = numbers[numbers.length-1-i];
+        console.log(revNumbers)
+    }
+    return revNumbers;
+}
+
+
+console.log(reverse(revNumbers));
+
+
+//Sort numbers ascending.
+numbers = [21, 43, 58, 53, 52, 14, 7, 9];
+
+function sorting(arr) {
+
+    sortedArr = arr.sort((a,b) => a-b );
+
+    return sortedArr;
+    
+}
+
+console.log(sorting(numbers));
+
+///
+
+numbers = [21, 43, 58, 53, 52, 14, 7, 9];
+
+numbers.splice(2,3);
+console.log(numbers)
+numbers.splice(2,0,48, 84, 56)
+console.log(numbers)
+numbers.sort((a,b) => a-b);
+console.log(numbers)
+let newArray = numbers.slice(3, 7)
+console.log(newArray)
+console.log(numbers.indexOf(48))
+console.log(numbers.includes(48))
+let Fullname = ['Shiv', 'Raj', 'Singh'];
+console.log(Fullname.join('.'));
+
+const num = [21, 43, 58];
+const items = [48, 84, 56];
+const name = ['Shiv', 'Raj'];
+const rest = ['Singh'];
+let newArray1 = [...num, ...items, ...name, ...rest];
+console.log(newArray1);
+let newNum = [...num];
+console.log(newNum);
+
+let maxNumber = Math.max(...numbers)
+console.log(maxNumber);
+
+
+//Use find to get first even number.
+let array1 = [21, 23, 43, 52, 23, -41, 41, 51];
+
+let output = array1.find(a => a%2===0);
+console.log(output)
+//Use findIndex to locate number > 50.
+output = array1.findIndex(a => a>50);
+console.log(output)
+//Use some to check if any number is negative.
+output= array1.some(a=> a<0);
+console.log(output)
+//Use every to check if all numbers are positive.
+output = array1.every(a=> a>0);
+console.log(output)
+
+//Create array of names and convert all to uppercase.
+let names = ['Shiv', 'Raj', 'Singh', 'Tomar']
+output = names.map(a=> a.toUpperCase())
+console.log(output)
+
+//Filter all students with marks > 80.
+let marks = [40, 12, 12, 90, 94, 84, 38];
+output = marks.filter(a=> a>=80);
+console.log(output);
+//Calculate average using reduce.
+output = Math.floor(marks.reduce((a,b) => (a+b))/marks.length)
+console.log(output);
+
+//Count occurrences of numbers in array.
+output = marks.reduce((a,b) => {
+    a[b]= (a[b] || 0) +1;
+    return a;
+}, {})
+console.log(output);
+//Remove duplicates using Set.
+output = [...new Set(marks)]
+console.log(output);
+
+//# Part 5 — Objects Basics (76–90)
+// 1. Create object for a student.
+let student = {
+  name: "Shiv Raj",
+  age: 20,
+  course: "Computer Science",
+  grade: "A"
+};
+console.log(student);
+console.log(student.name);
+console.log(student.age);
+console.log(student['name']);
+console.log(student['age']);
+//Add new property dynamically.
+student.email = 'test@test.com';
+student['city'] = 'Delhi';
+console.log(student);
+//Delete a property.
+delete student.city;
+delete student.name;
+console.log(student);
+
+//Create object method.
+student = {
+  fname: "Shiv Raj",
+  age: 20,
+  course: "Computer Science",
+  grade: "A",
+
+  // Object Method
+  introduce: function() {
+    return `Hi, my name is ${this.fname}. I study ${this.course}.`;
+  },
+
+  // Nested object
+   address: {
+    street: "123 Main Road",
+    city: "New Delhi",
+    zip: "110001"
+  }
+};
+
+console.log(student.introduce());
+console.log(student.address.city);
+
+//Destructure object properties.
+// Destructuring syntax
+let { fname, age=18, course, grade } = student;
+console.log(fname)
+console.log(age)
+//Rename variables while destructuring.
+//let { fname:fullName, age:age1, course:course1, grade } = student;
+
+//Copy object using spread operator.
+let student1 = {...student}
+console.log(student)
+console.log(student1)
+//Merge two objects.
+let mergedStudent = {...student, ...student1}
+console.log(mergedStudent)
+
+
+
+
+
+
 
 
 
