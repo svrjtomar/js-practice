@@ -1,3 +1,7 @@
+"use strict";
+
+
+
 console.log('Phase 2')
 
 
@@ -160,7 +164,7 @@ console.log(countVowels1('Shiv Raj'));
 
 function palindrome(str){
 
-    str1= str.split("").reverse().join("")
+   let str1= str.split("").reverse().join("")
 
     return (str==str1)? true: false;
 }
@@ -234,6 +238,60 @@ console.log(fibonacci(i));
 
 printFibonacciSeries(5);
 
+// Create an IIFE that prints "Executed".
+
+(function() {
+console.log("Executed")
+})();
 
 
 
+
+//Use forEach to print all numbers doubled.
+
+let num1 = [3, 5, 3, 14, 18];
+
+let num2 = num1.forEach(element => {
+  let doubleNum = element*2;
+    
+});
+console.log(num2)
+
+num1.map(element => {
+ let sqrNum = element*element;
+    console.log(sqrNum)
+})
+
+function double(x){
+    return x*2;
+}
+let doubleNum = num1.map(double);
+    console.log(doubleNum)
+
+
+    //Use filter to get even numbers.
+let evenNumbers = num1.filter(x => { return (x%2 === 0)
+})
+console.log(evenNumbers)
+
+"use strict";
+test1 = x => x%2 === 0;
+console.log(test1()) //false
+
+
+//Use reduce to calculate sum.
+
+
+console.log(num1.reduce((a,b) => a+b, 10))
+
+//Use reduce to find maximum number.
+num1 = [3, 5, 300, 114, 18];
+let maxNum = num1.reduce((a,b) => {
+    if(a>b) {
+     return  a;
+    }else {
+        return b;
+    }
+})
+
+console.log(maxNum)
