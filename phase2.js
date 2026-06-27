@@ -344,6 +344,58 @@ console.log(output);
 output = [...new Set(marks)]
 console.log(output);
 
+
+
+//Use forEach to print all numbers doubled.
+
+let num1 = [3, 5, 3, 14, 18];
+
+let num2 = num1.forEach(element => {
+  let doubleNum = element*2;
+    
+});
+console.log(num2)
+
+num1.map(element => {
+ let sqrNum = element*element;
+    console.log(sqrNum)
+})
+
+function double(x){
+    return x*2;
+}
+let doubleNum = num1.map(double);
+    console.log(doubleNum)
+
+
+    //Use filter to get even numbers.
+let evenNumbers = num1.filter(x => { return (x%2 === 0)
+})
+console.log(evenNumbers)
+
+"use strict";
+test1 = x => x%2 === 0;
+console.log(test1()) //false
+
+
+//Use reduce to calculate sum.
+
+
+console.log(num1.reduce((a,b) => a+b, 10))
+
+//Use reduce to find maximum number.
+num1 = [3, 5, 300, 114, 18];
+let maxNum = num1.reduce((a,b) => {
+    if(a>b) {
+     return  a;
+    }else {
+        return b;
+    }
+})
+
+console.log(maxNum)
+
+
 //# Part 5 — Objects Basics (76–90)
 // 1. Create object for a student.
 let student = {
@@ -404,60 +456,3 @@ console.log(student1)
 //Merge two objects.
 let mergedStudent = {...student, ...student1}
 console.log(mergedStudent)
-
-
-
-
-
-
-
-
-
-//Use forEach to print all numbers doubled.
-
-let num1 = [3, 5, 3, 14, 18];
-
-let num2 = num1.forEach(element => {
-  let doubleNum = element*2;
-    
-});
-console.log(num2)
-
-num1.map(element => {
- let sqrNum = element*element;
-    console.log(sqrNum)
-})
-
-function double(x){
-    return x*2;
-}
-let doubleNum = num1.map(double);
-    console.log(doubleNum)
-
-
-    //Use filter to get even numbers.
-let evenNumbers = num1.filter(x => { return (x%2 === 0)
-})
-console.log(evenNumbers)
-
-"use strict";
-test1 = x => x%2 === 0;
-console.log(test1()) //false
-
-
-//Use reduce to calculate sum.
-
-
-console.log(num1.reduce((a,b) => a+b, 10))
-
-//Use reduce to find maximum number.
-num1 = [3, 5, 300, 114, 18];
-let maxNum = num1.reduce((a,b) => {
-    if(a>b) {
-     return  a;
-    }else {
-        return b;
-    }
-})
-
-console.log(maxNum)
