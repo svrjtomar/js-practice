@@ -264,17 +264,17 @@ console.log(reverse(revNumbers));
 
 
 //Sort numbers ascending.
-numbers = [21, 43, 58, 53, 52, 14, 7, 9];
+numbers = [21, 43, 58, 53, 52, 14, 7, 9]
 
-function sorting(arr) {
+// function sorting(arr1) {
 
-    sortedArr = arr.sort((a,b) => a-b );
+//     sortedArr = arr1.sort((a,b) => a-b );
 
-    return sortedArr;
+//     return sortedArr;
     
-}
+// }
 
-console.log(sorting(numbers));
+// console.log(sorting(numbers));
 
 ///
 
@@ -456,3 +456,420 @@ console.log(student1)
 //Merge two objects.
 let mergedStudent = {...student, ...student1}
 console.log(mergedStudent)
+
+//# Part 6 — Advanced Objects + Real Logic (91–100)
+
+// 1. Use `Object.keys()` on object.
+let keys = Object.keys(student);
+console.log(keys)
+let values = Object.values(student)
+console.log(values)
+let entries = Object.entries(student)
+console.log(entries)
+
+
+//Loop through object using for...in.
+for (let key in student) {
+  console.log(key + ": " + student[key]);
+}
+// Freeze an object and test modification.
+// Object.freeze(student);
+// student.age = 35; //throwing error due to freeze
+// console.log(student.age)
+Object.seal(student)
+student.age = 28;
+console.log(student.age)
+console.log(Object.isSealed(student))
+
+//Create array of objects for users.
+let users = [
+    {fname: 'Shivraj', age: 38, city: 'Delhi'},
+    {fname: 'Vijay', age: 28,   city: 'Mumbai'},
+    {fname: 'Ajay',  age: 18,   city: 'Jaipur'}]
+
+    //Find user with highest age.
+let oldestUser = users.reduce((a, b) => (b.age> a.age? b : a));
+console.log(oldestUser.fname, oldestUser.age, oldestUser.city)
+
+//Build a mini TODO app using arrays + objects.
+
+let todos = [
+    {id:1, task: 'Solve Phase 2 ques', completed: true},
+    {id:2, task: 'Solve Phase 3 ques', completed: false},
+    {id:3, task: 'Solve Phase 4 ques', completed: false}
+];
+
+function addTask(task){
+    let newId = todos.length +1;
+    todos.push({id: newId, task: task, completed: false });
+}
+function completedTask(id){
+    let todoUpdate = todos.find(t => t.id === id);
+     if (todoUpdate) todoUpdate.completed = true;
+}
+
+function deleteTask(id){
+    let index = todos.findIndex(a => a.id === id);
+    todos.splice(index,1);
+    todos = todos.map((t, index) => ({ ...t, id: index + 1 }));
+    
+}
+function showAllTask(){
+    todos.forEach(t => {
+        console.log(`${t.id}. ${t.task} -${t.completed ? "Done" : "Pending"}`);
+    });
+}
+
+deleteTask(2);
+console.log(todos)
+addTask('Phase 5 ques')
+addTask('Phase 5 ques')
+console.log(todos)
+deleteTask(2);
+completedTask(2)
+completedTask(1)
+console.log(todos)
+showAllTask();
+
+
+// cart system
+let inventory = [
+  { id: 1, name: "Apple", price: 30, quantity: 1 },
+  { id: 2, name: "Milk", price: 50, quantity: 1 }
+];
+let cart=[]
+let cartIndex = cart.findIndex(object => object.id == id)
+function addItem(id, quantity=1){
+    let position = inventory.findIndex(object => object.id ===id);
+    let item = inventory[position];
+    let itemName = item.name;
+    let itemPrice = item.price
+
+    let cartIndex = cart.findIndex(object => object.id == id)
+    if(cartIndex !== -1){
+        cart[cartIndex].quantity += quantity;
+    } else {
+    cart.push({id:id, name: itemName, quantity: quantity, price: itemPrice
+    })
+}
+  
+    console.log('Total Amount: '+calculateTotal())
+   
+}
+
+function calculateTotal(){
+        
+       return cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    };
+
+function removeItem(id){
+let cartIndex = cart.findIndex(object => object.id == id)
+    if(cartIndex !== -1) {
+    cart.splice(cartIndex,1);
+    }
+    console.log('Total Amount: '+calculateTotal())
+
+}
+ 
+function updateItems(id, qty) {
+let cartIndex = cart.findIndex(object => object.id == id)
+    
+    return cart[cartIndex].quantity += qty;
+    
+}
+
+console.log(inventory)
+addItem(1)
+addItem(2)
+removeItem(1)
+updateItems(2, 9)
+addItem(2)
+console.log(cart)
+
+//Create student management system.
+let stud = [];
+
+function addStud(sName, age, course){
+    stud.push({id: stud.length+1, name: sName, age: age, course: course})
+}
+
+function remStud(id) {
+  let  studIndex = stud.findIndex(obj => obj.id === id);
+    if(stud[studIndex] !== -1){
+        stud = stud.filter(obj => obj.id !== id)
+    }
+    
+}
+
+
+addStud('Shivraj', 28, 'BCA');
+addStud('Vijay', 38, 'BCA');
+addStud('Raj', 38, 'BCA');
+remStud(2)
+console.log(stud)
+
+//phase 2 sheet 2
+
+//Create an array of 5 favorite movies and print all values.
+// **Hint:** Use indexing
+let movies = ["Inception", "The Dark Knight", "Interstellar", "Avengers: Endgame", "RRR"];
+
+for(let i=0; i < movies.length; i++){
+    console.log(movies[i]);
+}
+
+// Create an array containing numbers, strings, boolean, and another array. Print only the nested array value.
+
+// **Hint:** Mixed data types + nested indexing
+
+let boxOffice = ['Movies', 2026, ['SRK', 'Actor', 56], true ]
+//1st method
+for(let i=0; i < boxOffice.length; i++){
+    if(typeof boxOffice[i] === "object") {
+        console.log(boxOffice[i])
+    }
+}
+// 2nd method
+for(let i=0; i < boxOffice.length; i++){
+    if(Array.isArray(boxOffice[i])) {
+        console.log(boxOffice[i])
+    }
+}
+
+
+// swap using temp variable
+numbers = [1, 2, 3, 4 , 5, 6, 7, 8, 9];
+
+let temp = numbers[1];
+    numbers[1] = numbers[numbers.length-2];
+    numbers[numbers.length-2] = temp;
+    console.log(numbers)
+
+
+//Create a 2D array and print all first elements of inner arrays.
+let pairs = [[2,4], [5, 2], [9, 4], [11, 23]];
+
+//using for loop
+    for (let i=0; i<pairs.length; i++) {
+        
+        console.log(pairs[i][0])
+    }
+//using for of
+     for (let inArray of pairs) {
+        
+        console.log(inArray[0])
+    }
+//using forEach
+    pairs.forEach(element => {
+
+        console.log(element[0])
+        
+    });
+
+
+//Find the sum of all diagonal elements in a 3x3 matrix.
+
+let matrix = [
+    [1, 4, 5], 
+    [2, 5, 4], 
+    [5, 6, 4]]
+let sum =0;
+for (let i = 0; i < matrix.length; i++) {
+    sum += matrix[i][i];
+}
+
+for(let i = 0; i < matrix.length; i++){
+    sum += matrix[i][matrix.length-1-i];
+}
+
+if (matrix.length % 2 !== 0) {
+  sum -= matrix[Math.floor(matrix.length / 2)][Math.floor(matrix.length / 2)];
+}
+console.log(sum)
+
+//Keep removing elements until array becomes empty.
+
+num1 = [3, 5, 3, 14, 18, 8];
+while(num1.length > 0){
+    num1.pop();
+    console.log(num1)
+}
+
+num1.unshift(1, 2, 4, 5)
+num1.unshift(1, 2, 3, 5)
+    console.log(num1)
+
+num1.splice(Math.floor((num1.length-1)/2), 3, 5, 6, 7)
+    console.log(num1)
+
+num1.reverse()
+    console.log(num1)
+
+//full array manual reverse --loop for only half of length - full length will swap again an array will be unchanged
+
+    
+ for (let i = 0; i < num1.length/2 ; i++) {
+        
+        let temp = num1[i];
+            num1[i] = num1[num1.length-1-i];
+           num1[num1.length-1-i] = temp;
+    }
+    console.log(num1)
+
+    // 1st half reverse
+let n = Math.floor((num1.length)/2)
+    for (let i = 0; i < n/2 ; i++) {
+        
+        let temp = num1[i];
+            num1[i] = num1[n-1-i];
+            num1[n-1-i] = temp;
+    }
+    console.log(num1)
+
+// sort array -using compare function 
+
+num1.sort((a,b) => a-b);
+    console.log(num1)
+num1.sort((a,b) => b-a );
+    console.log(num1)
+
+num1.sort((a,b) => {
+    if((a%2) !== (b%2)) {
+       return (a%2) - (b%2)
+    }
+    else {
+      return  a-b
+    }
+
+});
+    console.log(num1)
+
+// Create a copy excluding first and last element.
+num2 = num1.slice(1, num1.length-1)
+    console.log(num2)
+let num3 = num1.concat(num2)
+console.log(num3);
+let mergedSet = [...new Set(num3)]
+console.log(mergedSet);
+
+let fruits = ['apple', 'mango', 'guava']
+console.log(fruits.includes('apple'))
+
+let basket = ['apple', 'mango', 'guava', 'melon', 'plum'];
+let allExist = true;
+for(let i =0; i< fruits.length; i++){
+
+    if(!basket.includes(fruits[i])){
+        allExist = false;
+        break;
+    }
+}
+console.log(allExist)
+
+//
+console.log(fruits.indexOf('apple'))
+
+//Find all positions of repeated number 5.
+numbers = [3, 5, 6, 6, 3, 5, 8, 5, 3, 5];
+let position = [];
+for (let i = 0; i < numbers.length; i++) {
+    const element = numbers[i];
+    if(element === 5){
+        position.push(i)
+    }
+}
+console.log(position)
+//
+console.log(fruits.join(','))
+
+//
+for (const element of fruits) {
+    console.log(element)
+    
+}
+//Count vowels from array of characters.
+let chars = ['a', 'b', 'c', 'd', 'e', 'i', 'o', 'u', 'e', 'a'];
+ let count= 0;
+ let vowels = 'aeiou';
+for (const element of chars) {
+    if(vowels.includes(element)){
+        count++;
+    }
+}
+console.log(count)
+
+//19. Reference Behaviour of Array
+//Assign one array to another variable and modify second one.
+let copyBasket = basket;
+let shallowCopyBasket = [...basket];
+console.log(basket);
+basket.push('banana');
+console.log(copyBasket);
+console.log(basket);
+console.log(shallowCopyBasket);
+
+//
+//Merge arrays and add extra values in between.
+shallowCopyBasket = [...basket, 'apple', 'orange', ...fruits];
+console.log(shallowCopyBasket);
+
+//Questions (Phase -2 ) Sheet - 3
+//forEach
+
+let prices = [100, 250, 399, 499];
+prices.forEach(element => {
+    console.log(`₹${element}`)
+});
+
+let students = [
+  { name: "Anubhav", marks: 85 },
+  { name: "Rahul", marks: 42 },
+  { name: "Aman", marks: 90 },
+];
+
+students.forEach(element => { 
+    if(element.marks > 50)
+    {
+        console.log(`${element.name} - Pass`)
+    }
+    else {
+                console.log(`${element.name} - Fail`)
+
+    }
+    
+});
+
+
+//map()
+
+names = ["anubhav", "rahul", "aman"];
+let uNames = names.map(a => a.toUpperCase())
+console.log(uNames);
+
+let products = [
+  { name: "Laptop", price: 50000 },
+  { name: "Phone", price: 20000 },
+];
+
+let discountedProducts = products.map(a => 
+    ({ name: a.name, price: a.price, discountPrice: a.price*0.9 })
+)
+console.log(discountedProducts)
+
+//filter()
+let nums = [1,2,3,4,5,6,7,8];
+console.log(nums.filter(a=> a%2===0));
+
+users = [
+  { name: "Anubhav", active: true },
+  { name: "Rahul", active: false },
+  { name: "Aman", active: true },
+];
+
+let activeUsers = users.filter(a => a.active)
+console.log(activeUsers)
+// if want only names need to chain map()
+activeUsers = users.filter(a => a.active).map(a => a.name)
+console.log(activeUsers)
+
+//reduce()
