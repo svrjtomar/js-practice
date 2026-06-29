@@ -873,3 +873,158 @@ activeUsers = users.filter(a => a.active).map(a => a.name)
 console.log(activeUsers)
 
 //reduce()
+nums = [100, 2, 3, 4];
+let total = nums.reduce((a, b) => {
+    a += b
+    return a;
+}, 0)
+
+console.log(total)
+
+fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+let freq = {};
+for (let item of fruits) {
+   
+    if(freq[item]){
+        freq[item]++;
+    }else {
+        freq[item] = 1;
+    }
+}
+console.log(freq)
+
+//now using reduce()
+let freq1 = fruits.reduce((acc, item) => {
+    if(acc[item]) {
+        acc[item]++;
+    }else {
+        acc[item] =1;
+    }
+    return acc;
+}, {})
+  
+console.log(freq1)
+
+//find()
+nums = [20, 35, 60, 80];
+console.log(nums.find(a=> a>50))
+
+users = [
+  { username: "rahul" , name: 'Rahul' },
+  { username: "admin", name: 'shiv'},
+  { username: "aman", name: 'Aman' }
+];
+
+console.log(users.find(a => a.username==='rahul'))
+
+//findIndex()
+console.log(nums.findIndex(a => a==60))
+
+students = [
+  { name: "A", marks: 90 },
+  { name: "B", marks: 30 },
+  { name: "C", marks: 70 },
+];
+
+console.log(students.findIndex(a => a.marks < 40))
+
+//some() returns true if at least one condition matches.
+nums = [10, 20, -5, 40];
+console.log(nums.some(a => a<0))
+
+
+products = [
+  { name: "Laptop", stock: 5 },
+  { name: "Phone", stock: 0 },
+];
+console.log(products.some(a => a.stock===0))
+
+//every() - checks all elements.
+console.log(nums.every(a => a>0))
+
+students = [
+  { name: "A", marks: 80 },
+  { name: "B", marks: 45 },
+  { name: "C", marks: 60 },
+];
+
+console.log(students.every(a => a.marks > 40))
+
+
+// Phase 2 - sheet 4 
+const car = {
+  brand: "BMW",
+  model: "M4",
+  year: 2022
+}
+
+console.log(car.brand, car.model)
+car.model = 'M5'
+console.log(car["brand"], car["model"])
+
+let user = {
+  name: "Anubhav",
+  age: 20
+}
+
+user.isAdmin = true;
+console.log(user)
+delete user.isAdmin;
+console.log(user)
+
+//6. Count Properties
+//Write a function that returns how many properties an object has.
+
+function countProperties(obj){
+  return  Object.keys(obj).length
+}
+
+console.log(countProperties(car));
+
+//
+const person = {
+  name: "Rahul",
+  age: 22,
+  city: "Delhi"
+}
+
+for (const key in person) {
+    if (!Object.hasOwn(person, key)) continue;
+       
+    console.log(`${key} : ${person[key]}`)
+}
+
+
+user = {
+  name: "Rahul",
+  age: 22,
+  city: "Delhi"
+};
+
+// Check if "email" exists in object --(using in)
+if ("email" in user) {
+  console.log("Email exists");
+} else {
+  console.log("Email does not exist");
+}
+
+//Merge these two objects into one.
+let obj1 = { a: 1, b: 2 }
+let obj2 = { c: 3, d: 4 }
+
+let obj3 = {...obj1, ...obj2}
+console.log(obj3)
+
+//Convert this object into an array of key-value pairs.
+console.log(Object.entries(user))
+
+//Find the student with highest marks.
+marks = {
+  Anubhav: 95,
+  Rahul: 82,
+  Aman: 90
+}
+
+let maxValue = Object.keys(marks).reduce((a, b) => marks[a] > marks[b]? a : b)
+console.log(maxValue)
+
